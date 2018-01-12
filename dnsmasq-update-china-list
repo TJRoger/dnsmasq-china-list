@@ -7,11 +7,14 @@ case "$1" in
   ali)
     DNS=223.5.5.5
     ;;
+  baidu)
+    DNS=180.76.76.76
+    ;;
   cnnic)
     DNS=1.2.4.8
     ;;
-  baidu)
-    DNS=180.76.76.76
+  dnspod)
+    DNS=119.29.29.29
     ;;
   google)
     DNS=8.8.4.4
@@ -21,3 +24,5 @@ case "$1" in
 esac
 
 sed -i "s|^\(server.*\)/[^/]*$|\1/$DNS|" /usr/local/etc/dnsmasq.d/accelerated-domains.china.conf
+sed -i "s|^\(server.*\)/[^/]*$|\1/$DNS|" /usr/local/etc/dnsmasq.d/google.china.conf 2>/dev/null
+sed -i "s|^\(server.*\)/[^/]*$|\1/$DNS|" /usr/local/etc/dnsmasq.d/apple.china.conf 2>/dev/null
