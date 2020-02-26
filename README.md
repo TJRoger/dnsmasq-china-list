@@ -39,7 +39,19 @@ Details
 Usage
 =====
 
-1. Place accelerated-domains.china.conf, bogus-nxdomain.china.conf (and optionally google.china.conf) under /usr/local/etc/dnsmasq.d/ (Create the folder if it does not exist).
+Automatic Installation (recommended)
+------------------------------------
+
+1. Fetch the installer from github (or a mirror): `wget https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/install.sh`
+2. (Optional) Edit it to use your favorite DNS server and/or another mirror to download the list.
+3. Run it as root: `sudo ./install.sh`
+
+You can save the installer and run it again to update the list regularly.
+
+Manual Installation
+-------------------
+
+1. Place accelerated-domains.china.conf, bogus-nxdomain.china.conf (and optionally google.china.conf, apple.china.conf) under /usr/local/etc/dnsmasq.d/ (Create the folder if it does not exist).
 2. Uncomment "conf-dir=/etc/dnsmasq.d" in /etc/dnsmasq.conf
 3. (Optional) Place dnsmasq-update-china-list into /usr/bin/
 4. (Optional) Make custom DNS server configuration and/or other services' configuration.
@@ -51,6 +63,8 @@ Usage
   make unbound
   # generate bind's configuration
   make bind
+  # full example of generating dnscrypt-proxy forwarding rules for Windows
+  make SERVER=101.6.6.6 NEWLINE=DOS dnscrypt-proxy
   ```
 
 License
